@@ -1,5 +1,5 @@
 import urllib3
-from session import HTTPSessionManager
+from .session import HTTPSessionManager
 
 
 class Request:

@@ -1,10 +1,9 @@
 [project]
 name = "ehr-library"
-version = "0.1.0"
+version = "0.1.2"
 description = "Easy way to make http requests."
 readme = "README.md"
 requires-python = ">=3.12"
-license = "The Freedom Reciprocal License (FRL)"
 dependencies = [
     "ipython>=8.29.0",
     "setuptools>=75.6.0",

@@ -1,6 +1,6 @@
 import urllib3
 from urllib3.util.retry import Retry
-from exceptions import HTTPRequestException
+from .exceptions import HTTPRequestException
 
 
 class HTTPSessionManager:

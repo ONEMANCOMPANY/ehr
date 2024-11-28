@@ -1,4 +1,4 @@
-from src.core import Request
+from ehr_library.core import Request
 
 
 if __name__ == "__main__":
