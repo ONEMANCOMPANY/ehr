@@ -1,6 +1,5 @@
 import urllib3
 from urllib3.util.retry import Retry
-from .exceptions import HTTPRequestException
 
 
 class HTTPSessionManager:
@@ -17,7 +16,7 @@ class HTTPSessionManager:
             allowed_methods=["GET", "POST", "PUT", "DELETE"],
         )
 
-    def request(self, method, url, headers=None, body=None):
+    def request(self, method, url, headers=None, body=None, download_path=None):
         """
         Make an HTTP request using the managed session.
 
@@ -25,7 +24,8 @@ class HTTPSessionManager:
         :param url: URL for the request
         :param headers: Optional headers dictionary
         :param body: Optional request body
-        :return: urllib3.response.HTTPResponse object
+        :param download_path: Optional path to save the response content as a file.
+        :return: Response data or path to the saved file.
         """
         response = self.http.request(
             method=method,
@@ -34,4 +34,16 @@ class HTTPSessionManager:
             body=body,
             retries=self.retries,
         )
-        return response
+
+        if download_path and method.upper() == "GET" and response.status == 200:
+            try:
+                with open(download_path, "wb") as file:
+                    file.write(response.data)
+                return {"message": "File downloaded successfully", "path": download_path}
+            except IOError as e:
+                return {"error": f"Failed to save file: {e}"}
+        else:
+            return {
+                "status": response.status,
+                "data": response.data.decode('utf-8') if response.data else None,
+            }
