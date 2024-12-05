@@ -1,5 +1,6 @@
 import urllib3
-from .session import HTTPSessionManager
+from http.cookiejar import CookieJar
+from session import HTTPSessionManager
 
 
 class Request:
@@ -40,4 +41,12 @@ class Request:
                 return self.session_manager.request(
                     method="GET", url=url, headers=headers
                 )
+
+if __name__ == "__main__":
+    manager = Request(method="GET")
     
+    manager.request(url="https://httpbin.org/cookies/set?name=value")
+    print("Cookies armazenados:", manager.session_manager.get_cookies())
+    
+    response = manager.request(url="https://httpbin.org/cookies")
+    print("Resposta:", response)
