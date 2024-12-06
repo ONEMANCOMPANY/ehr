@@ -1,6 +1,6 @@
 [project]
 name = "ehr-library"
-version = "0.2.2"
+version = "0.3.0"
 description = "Easy way to make http requests."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -9,6 +9,9 @@ dependencies = [
     "setuptools>=75.6.0",
     "urllib3>=2.2.3",
     "wheel>=0.45.1",
+    "pandas==2.2.3",
+    "requests==2.32.3",
+    "websockets==14.1"
 ]
 
 [build-system]
