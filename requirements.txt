@@ -4,6 +4,7 @@ cffi==1.17.1
 charset-normalizer==3.4.0
 cryptography==44.0.0
 decorator==5.1.1
+ehr-library==0.2.2
 executing==2.1.0
 idna==3.10
 ipython==8.30.0
@@ -22,9 +23,12 @@ pyOpenSSL==24.3.0
 python-dateutil==2.9.0.post0
 pytz==2024.2
 requests==2.32.3
+setuptools==75.6.0
 six==1.17.0
 stack-data==0.6.3
 traitlets==5.14.3
 tzdata==2024.2
 urllib3==2.2.3
 wcwidth==0.2.13
+websockets==14.1
+wheel==0.45.1
